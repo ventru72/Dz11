@@ -17,11 +17,13 @@ namespace Workers
 
         static void Main(string[] args)
         {
+            Sql_Command sql_Command = new Sql_Command();
+            sql_Command.Connected(sql_Command.Insert_Department());
             
             Sql sql = new Sql();
             //sql.Connected(new Select_All());
             
-            sql.Connected(new Insert());
+            //sql.Connected(new Insert());
         }
     }
 }

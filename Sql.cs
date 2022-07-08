@@ -30,7 +30,7 @@ namespace Workers
 
         public string Request()
         {
-            string request = $"SELECT * FROM {Console.ReadLine()}";
+            string request = $"DELETE FROM workers WHERE worker_id = {Console.ReadLine()} ";
             return request;
         }
     }
@@ -38,7 +38,8 @@ namespace Workers
     {
         public string Request()
         {
-            string request = "INSERT INTO department (department_id, department_parent_id ) VALUES (3, 0)";
+            string department = "INSERT INTO department (department_id ) VALUES (26, 0)";
+            string request = "INSERT INTO department (department_id ) VALUES (26, 0)";
             return request;
         }
     }
@@ -47,24 +48,35 @@ namespace Workers
     {
         public void Connected(IRequest request)
         { 
-            string str = string.Empty;
-
             string connString = "Host=localhost;Username=postgres;Password=VeNtRu72;Database=workers";
-              var con = new NpgsqlConnection(connString);
+            NpgsqlConnection con = new NpgsqlConnection(connString);
             con.Open();
-            var cmd = new NpgsqlCommand();
-            cmd.Connection = con;
-             cmd.CommandText = "INSERT INTO department (department_id, department_parent_id ) VALUES (5, 0)";
+            NpgsqlCommand cmd = new NpgsqlCommand(request.Request(), con);
             cmd.ExecuteNonQuery();
-
-            
-            
-
-            //npgc.ExecuteNonQuery();
-
+            if (request.GetType() == new Select_All().GetType())
+            {
+                List<Department> list = new List<Department>();
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                         
+                        //Console.WriteLine("{0} {1} ", reader.GetInt32(0), reader.GetInt32(1));
+                        Department department = new Department();
+                        department.Depatment_id = reader.GetInt32(0);
+                        department.Depatment_parent_id = reader.GetInt32(1);
+                        list.Add(department);
+                    }
+                }
+                foreach (Department item in list)
+                {
+                    item.Print();
+                }
+                Console.ReadKey();
+            }
+           
             con.Close();
         }
-
 
         //public void Connected(IRequest request)
         //{   string str = string.Empty;
