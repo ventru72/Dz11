@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Syvstem.Tvhreading.Tasks;
 using Npgsql;
-
+using System.Data.SqlClient;
 namespace Workers
 {
     interface IWorkers

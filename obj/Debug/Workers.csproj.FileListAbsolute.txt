@@ -56,3 +56,5 @@ C:\Users\masta\Downloads\DZ11\Workers\obj\Debug\Workers.csproj.CoreCompileInputs
 C:\Users\masta\Downloads\DZ11\Workers\obj\Debug\Workers.csproj.CopyComplete
 C:\Users\masta\Downloads\DZ11\Workers\obj\Debug\Workers.exe
 C:\Users\masta\Downloads\DZ11\Workers\obj\Debug\Workers.pdb
+C:\Users\masta\Downloads\Workers~12\Work\obj\Debug\Workers.exe
+C:\Users\masta\Downloads\Workers~12\Work\obj\Debug\Workers.pdb
